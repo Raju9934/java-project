@@ -48,7 +48,8 @@ pipeline
                     sh 'docker tag java-app:1.0.0 2024dock/java-app:1.0.0 '
                 }
             }
-            stage('Docker Login') {
+            stage('Docker Login') 
+            {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
@@ -56,6 +57,7 @@ pipeline
                         
                     }
                 }
+                 }
             }
             stage("Pushing image on docker hub")
             {
@@ -70,7 +72,7 @@ pipeline
                 always
                 {
                     //clean up the workspace after the build
-                    ech 'Cleaning up workspace'
+                    echo 'Cleaning up workspace'
                     cleanWs()
                 }
                 success
@@ -85,4 +87,4 @@ pipeline
     
         }
     }
-}
+
