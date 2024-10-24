@@ -67,25 +67,6 @@ pipeline
                 }
 
             }
-            post
-            {
-                always
-                {
-                    //clean up the workspace after the build
-                    echo 'Cleaning up workspace'
-                    cleanWs()
-                }
-                success
-                {
-                    echo 'Build succeeded!'
-                }
-                failure
-                {
-                    echo 'Build failed'
-                }
-            }
-    
-        
        }
     }
 
