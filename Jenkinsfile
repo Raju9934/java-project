@@ -48,6 +48,15 @@ pipeline
                     sh 'docker tag java-app:1.0.0 2024dock/java-app:1.0.0 '
                 }
             }
+            stage('Docker Login') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                        sh "echo $PASS | docker login -u $USER --password-stdin"
+                        
+                    }
+                }
+            }
             stage("Pushing image on docker hub")
             {
                 steps
