@@ -8,7 +8,7 @@ pipeline
             {
                 steps
                 {
-                    git url 'https://github.com/Raju9934/javaapp.git', branch: 'main'
+                    git url 'https://github.com/Raju9934/java-project.git', branch: 'master'
                 }
             }
             stage('build code using maven')
